@@ -1,15 +1,18 @@
-define([],
+define([
+],
 function () {
 	return function (app) {
-		app.service("OutletService", function ($http) {
-			return {
-				getOutlets: function (latLng) {
-					return $http.get("http://localhost:9615/getOutlets?" + "lat=" + latLng.lat + "&lng=" + latLng.lng)
-						.then(function (result) {
-							return result.data;
-						});
-				}
+		app.factory("OutletService", function ($rootScope, $http) {
+			var outletService = {};
+
+			outletService.getOutlets = function (lat, lng) {
+				return $http.get("/app/outlets.json").then(function (result) {
+					outletService.outlets = result.data;
+					$rootScope.$broadcast("outletsFound");
+				});
 			};
+
+			return outletService;
 		});
 	};
 });
