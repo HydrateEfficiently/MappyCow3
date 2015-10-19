@@ -1,0 +1,14 @@
+{
+  "name": "AngularRequireSimpleSeed",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.4.7",
+    "angular-route": "1.4.7",
+    "requirejs": "2.1.x",
+    "leaflet": "0.7.x",
+    "d3": "3.5.6",
+    "leaflet.markercluster": "0.4.x",
+    "bootstrap-css": "3.3.x",
+    "leaflet.locatecontrol": "0.45.x"
+  }
+}

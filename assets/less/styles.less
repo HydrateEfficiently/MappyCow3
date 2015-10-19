@@ -1,0 +1,23 @@
+@sidebar-width: 20%;
+
+html, body {
+	height: 100%;
+	margin: 0px;
+}
+
+.main-underlay {
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.sidebar-overlay {
+	z-index: 1;
+	width: @sidebar-width;
+	position: absolute;
+}
+
+.panel {
+	margin: 5px;
+}

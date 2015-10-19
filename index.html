@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script data-main="app/main" src="app/bower_components/requirejs/require.js"></script>
+
+		<link rel="stylesheet" href="assets/less-css/styles.css" />
+		<link rel="stylesheet" href="app/bower_components/leaflet/dist/leaflet.css" />
+		<link rel="stylesheet" href="app/bower_components/bootstrap-css/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="app/bower_components/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="app/bower_components/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+	</head>
+
+	<body>
+		<div class="main-underlay">
+			<div data-ng-controller="MapController" style="height: 100%">
+				<map></map>
+			</div>
+		</div>
+		<div class="sidebar-overlay">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+				</div>
+				<div class="panel-body">
+					<div ng-view></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
