@@ -8,9 +8,9 @@ define([
 ],
 function (L, OutletMarkerLayer) {
 
-	function LeafletMap(elementId) {
-		this._innerMap = L.map(elementId, {
-			center: [40, -86],
+	function LeafletMap(elementId, MapStateService) {
+		var map = this._innerMap = L.map(elementId, {
+			center: MapStateService.center,
 			zoom: 10
 		});
 
@@ -19,12 +19,17 @@ function (L, OutletMarkerLayer) {
 			maxZoom: 18,
 			id: "michaelfry2002.ciffh9mgk00klsxlxqg3hm7bz",
 			accessToken: "pk.eyJ1IjoibWljaGFlbGZyeTIwMDIiLCJhIjoiY2lmZmg5bW9tMDBrb3R0a25sY2hrczhqYyJ9.6gUxriXEPeyvWQbq7znCAg"
-		}).addTo(this._innerMap);
+		}).addTo(map);
 
-		L.control.locate({ position: "topright" }).addTo(this._innerMap);
+		L.control.locate({ position: "topright" }).addTo(map);
 
 		this._outletMarkerLayer = new OutletMarkerLayer();
-		this._innerMap.addLayer(this._outletMarkerLayer);
+		map.addLayer(this._outletMarkerLayer);
+
+		map.on("moveend", function (ev) {
+			var latLng = map.getCenter();
+			MapStateService.setCenter(latLng.lat, latLng.lng);
+		});
 	}
 
 	LeafletMap.prototype.updateOutlets = function (outletsGeoJson) {

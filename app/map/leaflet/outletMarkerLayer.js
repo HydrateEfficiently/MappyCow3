@@ -14,11 +14,17 @@ define(function (require) {
 		});
 
 		self.setData = function (data) {
-			self._markers = L.geoJson(data, {
+			var newMarkers = L.geoJson(data, {
 				pointToLayer: defineFeature,
 				onEachFeature: addPopup
 			});
-			self.addLayer(self._markers);
+
+			if (self._markers) {
+				self.removeLayer(self._markers);
+			}
+
+			self.addLayer(newMarkers);
+			self._markers = newMarkers;
 		};
 
 		self.getBounds = function () {

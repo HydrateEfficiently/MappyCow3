@@ -1,8 +1,10 @@
 define([
+	"map/mapState_service",
 	"map/map_directive"
 ],
-function (mapDirective) {
+function (mapStateService, mapDirective) {
 	return function (app) {
+		mapStateService(app);
 		mapDirective(app);
 	};
 });

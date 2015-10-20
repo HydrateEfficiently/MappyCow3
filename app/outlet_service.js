@@ -6,7 +6,7 @@ function () {
 			var outletService = {};
 
 			outletService.getOutlets = function (lat, lng) {
-				return $http.get("/app/outlets.json").then(function (result) {
+				return $http.get("http://localhost:9615/getOutlets?lat=" + lat + "&lng=" + lng).then(function (result) {
 					outletService.outlets = result.data;
 					$rootScope.$broadcast("outletsFound");
 				});

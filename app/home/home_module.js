@@ -12,7 +12,8 @@ function (require, homeController) {
 			path: "/home",
 			route: {
 				templateUrl: require.toUrl("home/home.html"),
-				controller: C_HOME_CONTROLLER
+				controller: C_HOME_CONTROLLER,
+				controllerAs: "home"
 			}
 		};
 	};
