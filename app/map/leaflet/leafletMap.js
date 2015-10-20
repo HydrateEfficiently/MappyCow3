@@ -21,7 +21,8 @@ function (L, OutletMarkerLayer) {
 			accessToken: "pk.eyJ1IjoibWljaGFlbGZyeTIwMDIiLCJhIjoiY2lmZmg5bW9tMDBrb3R0a25sY2hrczhqYyJ9.6gUxriXEPeyvWQbq7znCAg"
 		}).addTo(map);
 
-		L.control.locate({ position: "topright" }).addTo(map);
+		var locationControl = this._locationControl = L.control.locate({ position: "topright" });
+		locationControl.addTo(map);
 
 		this._outletMarkerLayer = new OutletMarkerLayer();
 		map.addLayer(this._outletMarkerLayer);
@@ -31,6 +32,18 @@ function (L, OutletMarkerLayer) {
 			MapStateService.setCenter(latLng.lat, latLng.lng);
 		});
 	}
+
+	LeafletMap.prototype.findLocation = function (onLocationFound) {
+		var self = this;
+
+		function locationFound(ev) {
+			self._innerMap.off("locationfound", locationFound);
+			onLocationFound(ev);
+		}
+
+		this._locationControl.start();
+		this._innerMap.on("locationfound", locationFound);
+	};
 
 	LeafletMap.prototype.updateOutlets = function (outletsGeoJson) {
 		this._outletMarkerLayer.setData(outletsGeoJson);
