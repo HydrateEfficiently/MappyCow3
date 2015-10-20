@@ -1,11 +1,12 @@
 define([
 	// Explicit
 	"leaflet",
+	"map/leaflet/outletMarkerLayer",
 
 	// Implicit
 	"leaflet-locatecontrol"
 ],
-function (L) {
+function (L, OutletMarkerLayer) {
 
 	function LeafletMap(elementId) {
 		this._innerMap = L.map(elementId, {
@@ -21,10 +22,15 @@ function (L) {
 		}).addTo(this._innerMap);
 
 		L.control.locate({ position: "topright" }).addTo(this._innerMap);
+
+		this._outletMarkerLayer = new OutletMarkerLayer();
+		this._innerMap.addLayer(this._outletMarkerLayer);
 	}
 
 	LeafletMap.prototype.updateOutlets = function (outletsGeoJson) {
-		var i = 0;
+		this._outletMarkerLayer.setData(outletsGeoJson);
+		this._innerMap.fitBounds(this._outletMarkerLayer.getBounds());
+		console.log(outletsGeoJson);
 	};
 
 	return LeafletMap;

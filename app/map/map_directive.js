@@ -1,6 +1,6 @@
 define([
 	// Explicit
-	"map/leafletMap",
+	"map/leaflet/leafletMap",
 
 	// Implicit
 	"outlet_service"
