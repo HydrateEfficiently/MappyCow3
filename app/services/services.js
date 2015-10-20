@@ -1,11 +1,7 @@
 define([
-	"app",
 	"services/mapStateService",
-	"services/outletService",
-	"services/locationService"
+	"services/outletRequestService",
+	"services/locationService",
+	"services/outletFilterService"
 ],
-function (app, mapStateService, outletService, locationService) {
-	mapStateService(app);
-	outletService(app);
-	locationService(app);
-});
+function () { });

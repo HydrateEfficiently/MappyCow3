@@ -1,15 +1,20 @@
 define([
+	// Explicit
+	"filters/filterParameters",
+
+	// Implicit
 	"Services"
 ],
-function () {
+function (FilterParameters) {
 	return function (app, controllerName) {
-		app.controller(controllerName, function ($scope, MapStateService) {
+		app.controller(controllerName, function ($scope, OutletFilterService) {
 			var filters = this;
 
-			filters.showVegan = true;
-			filters.showVegetarian = true;
-			filters.showVegOptions = true;
-			filters.showStores = true;
+			filters.filterParameters = new FilterParameters();
+
+			filters.applyFilters = function () {
+				OutletFilterService.filterOutlets(filters.filterParameters);
+			};
 
 			return filters;
 		});

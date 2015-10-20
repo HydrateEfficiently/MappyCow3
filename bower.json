@@ -10,6 +10,7 @@
     "leaflet.markercluster": "0.4.x",
     "bootstrap-css": "3.3.x",
     "leaflet.locatecontrol": "0.45.x",
-    "awesome-bootstrap-checkbox": "0.3.x"
+    "awesome-bootstrap-checkbox": "0.3.x",
+    "lodash": "3.10.0"
   }
 }

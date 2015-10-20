@@ -8,6 +8,7 @@ require.config({
 		"leaflet": "bower_components/leaflet/dist/leaflet",
 		"leaflet-locatecontrol": "bower_components/leaflet.locatecontrol/dist/L.Control.Locate.min",
 		"leaflet-markercluster": "bower_components/leaflet.markercluster/dist/leaflet.markercluster",
+		"lodash": "bower_components/lodash/lodash.min",
 
 		// Modules
 		"Home": "home/home",

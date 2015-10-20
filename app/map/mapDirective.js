@@ -8,7 +8,7 @@ define([
 function (LeafletMap) {
 	var idCounter = 0;
 	return function (app) {
-		app.directive("map", function (OutletService, MapStateService, LocationService) {
+		app.directive("map", function (OutletRequestService, MapStateService, LocationService, OutletFilterService) {
 			var id = "leaflet_" + idCounter++;
 			return {
 				restrict: "E",
@@ -19,10 +19,14 @@ function (LeafletMap) {
 
 					map.findLocation(function (locationEvent) {
 						LocationService.locationFound(locationEvent.latlng.lat, locationEvent.latlng.lng);
-						OutletService.getOutlets(LocationService.location);
+						OutletRequestService.requestOutlets(LocationService.location);
 					});
 
-					OutletService.onOutletsFound(function (outlets) {
+					OutletRequestService.onOutletsRetrieved(function (outlets) {
+						map.updateOutlets(outlets);
+					});
+
+					OutletFilterService.onOutletsFiltered(function (outlets) {
 						map.updateOutlets(outlets);
 					});
 				}

@@ -6,10 +6,10 @@ define([
 	"Services"
 ],
 function (app) {
-	app.controller("AppController", function ($scope, $location, OutletService) {
+	app.controller("AppController", function ($scope, $location, OutletRequestService) {
 		this.panelTitle = "Home";
 
-		OutletService.onOutletsFound(function () {
+		OutletRequestService.onOutletsRetrieved(function () {
 			$location.path("filters");
 		});
 	});

@@ -2,22 +2,22 @@
 <b>Types</b>
 
 <div class="checkbox checkbox-success">
-	<input id="veganCheckbox" type="checkbox" ng-checked="filters.showVegan">
+	<input id="veganCheckbox" type="checkbox" ng-model="filters.filterParameters.vegan">
 	<label for="veganCheckbox" class="checkbox-label">Vegan Restaurants</label>
 </div>
 
 <div class="checkbox checkbox-info">
-	<input id="vegetarianCheckbox" type="checkbox" ng-checked="filters.showVegetarian">
+	<input id="vegetarianCheckbox" type="checkbox" ng-model="filters.filterParameters.vegetarian">
 	<label for="vegetarianCheckbox" class="checkbox-label">Vegetarian Restaurants</label>
 </div>
 
 <div class="checkbox checkbox-danger">
-	<input id="vegOptionsCheckbox" type="checkbox" ng-checked="filters.showVegOptions">
-	<label for="vegOptionsCheckbox" class="checkbox-label">Veg-Friendly Restaurants</label>
+	<input id="vegFriendlyCheckbox" type="checkbox" ng-model="filters.filterParameters.vegFriendly">
+	<label for="vegFriendlyCheckbox" class="checkbox-label">Veg-Friendly Restaurants</label>
 </div>
 
 <div class="checkbox checkbox-warning">
-	<input id="storesCheckbox" type="checkbox" ng-checked="filters.showStores">
+	<input id="storesCheckbox" type="checkbox" ng-model="filters.filterParameters.stores">
 	<label for="storesCheckbox" class="checkbox-label">Stores + More</label>
 </div>
 
@@ -63,5 +63,5 @@
 <hr />
 
 <div>
-	<button class="btn btn-primary" type="button">Go!</button>
+	<button class="btn btn-primary" type="button" ng-click="filters.applyFilters();">Go!</button>
 </div>
