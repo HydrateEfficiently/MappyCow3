@@ -1,9 +1,11 @@
 define([
+	"angular"
 ],
-function () {
+function (angular) {
 	return function (app) {
-		app.factory("MapStateService", function ($rootScope, LocationService) {
-			var mapStateService = {};
+		app.factory("MapStateService", function ($rootScope, $timeout, LocationService) {
+			var mapStateService = {},
+				onCenterChangedCallbacks = [];
 
 			if (LocationService.hasLocation()) {
 				mapStateService.center = LocationService.location;
@@ -13,7 +15,15 @@ function () {
 
 			mapStateService.setCenter = function (lat, lng) {
 				mapStateService.center = [lat, lng];
-				$rootScope.$broadcast("mapCenterUpdated");
+				angular.forEach(onCenterChangedCallbacks, function (callback) {
+					$timeout(function () {
+						callback(mapStateService.center);
+					}, 0);
+				});
+			};
+
+			mapStateService.onCenterChanged = function (callback) {
+				onCenterChangedCallbacks.push(callback);
 			};
 
 			return mapStateService;

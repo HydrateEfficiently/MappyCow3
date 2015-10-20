@@ -3,7 +3,7 @@ define([
 ],
 function () {
 	return function (app, controllerName) {
-		app.controller(controllerName, function ($scope, OutletService, MapStateService) {
+		app.controller(controllerName, function ($scope, $timeout, OutletService, MapStateService) {
 			var home = this;
 
 			home.getOutlets = function () {
@@ -11,17 +11,15 @@ function () {
 				OutletService.getOutlets(center[0], center[1]);
 			};
 
-			$scope.$on("mapCenterUpdated", function () {
-				updateCenter();
-				$scope.$apply();
+			MapStateService.onCenterChanged(function (center) {
+				updateCenter(center);
 			});
 
-			function updateCenter() {
-				var center = MapStateService.center;
+			function updateCenter(center) {
 				home.center = "Lat: " + center[0] + ", Lng: " + center[1];
 			}
 
-			updateCenter();
+			updateCenter(MapStateService.center);
 		});
 	};
 });

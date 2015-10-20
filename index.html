@@ -5,20 +5,23 @@
 
 		<link rel="stylesheet" href="assets/less-css/styles.css" />
 		<link rel="stylesheet" href="assets/less-css/clusterpies.css" />
+		<link rel="stylesheet" href="assets/less-css/filters.css" />
+
 		<link rel="stylesheet" href="app/bower_components/leaflet/dist/leaflet.css" />
 		<link rel="stylesheet" href="app/bower_components/bootstrap-css/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="app/bower_components/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="app/bower_components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
 		<link rel="stylesheet" href="app/bower_components/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
 	</head>
 
-	<body>
+	<body ng-controller="AppController as appCtrl">
 		<div class="main-underlay" style="height: 100%">
 			<map></map>
 		</div>
 		<div class="sidebar-overlay">
 			<div class="sidebar panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Panel title</h3>
+					<h3 class="panel-title">{{appCtrl.test}}</h3>
 				</div>
 				<div class="panel-body">
 					<div ng-view></div>

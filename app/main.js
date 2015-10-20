@@ -12,7 +12,8 @@ require.config({
 		// Modules
 		"Home": "home/home",
 		"Services": "services/services",
-		"Map": "map/map"
+		"Map": "map/map",
+		"Filters": "filters/filters"
 	},
 	shim: {
 		"angular": {

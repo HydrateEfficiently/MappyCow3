@@ -19,10 +19,11 @@ function (LeafletMap) {
 
 					map.findLocation(function (locationEvent) {
 						LocationService.locationFound(locationEvent.latlng.lat, locationEvent.latlng.lng);
+						OutletService.getOutlets(LocationService.location);
 					});
 
-					scope.$on("outletsFound", function () {
-						map.updateOutlets(OutletService.outlets);
+					OutletService.onOutletsFound(function (outlets) {
+						map.updateOutlets(outlets);
 					});
 				}
 			};

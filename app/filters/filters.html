@@ -1,0 +1,48 @@
+
+<b>Types</b>
+
+<div class="checkbox checkbox-success">
+	<input id="veganCheckbox" type="checkbox" ng-checked="filters.showVegan">
+	<label for="veganCheckbox" class="checkbox-label">Vegan Restaurants</label>
+</div>
+
+<div class="checkbox checkbox-info">
+	<input id="vegetarianCheckbox" type="checkbox" ng-checked="filters.showVegetarian">
+	<label for="vegetarianCheckbox" class="checkbox-label">Vegetarian Restaurants</label>
+</div>
+
+<div class="checkbox checkbox-danger">
+	<input id="vegOptionsCheckbox" type="checkbox" ng-checked="filters.showVegOptions">
+	<label for="vegOptionsCheckbox" class="checkbox-label">Veg-Friendly Restaurants</label>
+</div>
+
+<div class="checkbox checkbox-warning">
+	<input id="storesCheckbox" type="checkbox" ng-checked="filters.showStores">
+	<label for="storesCheckbox" class="checkbox-label">Stores + More</label>
+</div>
+
+<hr />
+
+<b>Tags</b>
+
+<div class="input-group">
+	<input type="text" class="form-control" placeholder="">
+	<span class="input-group-btn">
+		<button class="btn btn-default" type="button">Add</button>
+	</span>
+</div>
+
+<hr />
+
+<b>Opening hours</b>
+
+<div class="checkbox">
+	<input id="openNowCheckbox" type="checkbox" ng-checked="filters.openNow">
+	<label for="openNowCheckbox" class="checkbox-label">Open now</label>
+</div>
+
+<hr />
+
+<div>
+	<button class="btn btn-primary" type="button">Go!</button>
+</div>

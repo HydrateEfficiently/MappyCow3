@@ -2,15 +2,17 @@ define([
 	// Explicit
 	"angular",
 	"home/config",
+	"filters/config",
 
 	// Implicit
 	"ngRoute"],
 
-function (angular, homeConfig) {
+function (angular, homeConfig, filtersConfig) {
 	var app = angular.module("MappyCow", ["ngRoute"]);
 
 	app.config(function ($routeProvider) {
 		applyModuleConfig(homeConfig, $routeProvider);
+		applyModuleConfig(filtersConfig, $routeProvider);
 		$routeProvider.otherwise({redirectTo: "/home"});
 	});
 
@@ -22,8 +24,10 @@ function (angular, homeConfig) {
 		});
 	}
 
-	require(["Home", "Services", "Map"], function () {
-		angular.bootstrap(document, ['MappyCow']);
+	require(["Home", "Services", "Map", "Filters"], function () {
+		require(["appCtrl"], function () {
+			angular.bootstrap(document, ['MappyCow']);
+		});
 	});
 
 	return app;
