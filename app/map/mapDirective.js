@@ -3,8 +3,7 @@ define([
 	"map/leaflet/leafletMap",
 
 	// Implicit
-	"outlet_service",
-	"map/mapState_service"
+	"Services"
 ],
 function (LeafletMap) {
 	var idCounter = 0;

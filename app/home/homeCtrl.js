@@ -1,6 +1,5 @@
 define([
-	"outlet_service",
-	"map/mapState_service"
+	"Services"
 ],
 function () {
 	return function (app, controllerName) {

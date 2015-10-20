@@ -1,25 +1,30 @@
 define([
 	// Explicit
 	"angular",
-	"home/home_module",
-	"map/map_module",
-	"outlet_service",
+	"home/config",
 
 	// Implicit
 	"ngRoute"],
 
-function (angular, homeModule, mapModule, outletService) {
-
+function (angular, homeConfig) {
 	var app = angular.module("MappyCow", ["ngRoute"]);
-	var homeRoute = homeModule(app);
-	mapModule(app);
-
-	outletService(app);
 
 	app.config(function ($routeProvider) {
-		$routeProvider.when(homeRoute.path, homeRoute.route);
+		applyModuleConfig(homeConfig, $routeProvider);
 		$routeProvider.otherwise({redirectTo: "/home"});
 	});
 
-	return angular.bootstrap(document, ['MappyCow']);
+	function applyModuleConfig(config, $routeProvider) {
+		$routeProvider.when(config.path, {
+			templateUrl: config.templateUrl,
+			controller: config.controller,
+			controllerAs: config.controllerAs
+		});
+	}
+
+	require(["Home", "Services", "Map"], function () {
+		angular.bootstrap(document, ['MappyCow']);
+	});
+
+	return app;
 });
